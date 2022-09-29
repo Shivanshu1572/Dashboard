@@ -1,0 +1,22 @@
+import React, {createContext, useContext, useState} from 'react';
+
+const StateContext = createContext();
+
+const initialContext = {
+    chat : false,
+    cart : false,
+    userProfile: false,
+    notification: false,
+}
+
+export const ContextProvider = ({children}) => {
+    const [activeMenu, setActivemenu] = useState(true);
+     return(
+        <StateContext.Provider
+          value ={{activeMenu,setActivemenu}}>
+            {children}
+        </StateContext.Provider>
+     )
+}
+
+export const useStateContext = () => useContext(StateContext);
